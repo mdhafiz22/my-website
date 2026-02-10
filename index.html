@@ -1,0 +1,463 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MD Hafiz | Professional Portfolio</title>
+    <link href="https://fonts.googleapis.com/css2?family=Hind+Siliguri:wght@400;600&family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        /* Smooth Scrolling */
+        html {
+            scroll-behavior: smooth;
+        }
+
+        :root {
+            --primary-color: #00d2ff;
+            --secondary-color: #3a7bd5;
+            --accent-color: #ff6b6b;
+            --bg-dark: #0f0f23;
+            --bg-gradient: linear-gradient(135deg, #1e293b 0%, #0f0f23 50%, #1a1a2e 100%);
+            --card-bg: rgba(255, 255, 255, 0.05);
+            --card-border: rgba(255, 255, 255, 0.1);
+            --text-primary: #f8fafc;
+            --text-secondary: #94a3b8;
+            --glow: rgba(0, 210, 255, 0.4);
+            --shadow: 0 20px 40px -12px rgba(0, 0, 0, 0.8);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Inter', 'Hind Siliguri', sans-serif;
+        }
+
+        body {
+            background: var(--bg-gradient);
+            color: var(--text-primary);
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 20px;
+            position: relative;
+        }
+
+        /* Background Glows */
+        body::before {
+            content: '';
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 20% 80%, rgba(0, 210, 255, 0.1) 0%, transparent 50%),
+                        radial-gradient(circle at 80% 20%, rgba(255, 107, 107, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+            z-index: -1;
+        }
+
+        .card {
+            background: var(--card-bg);
+            backdrop-filter: blur(25px);
+            -webkit-backdrop-filter: blur(25px);
+            border: 1px solid var(--card-border);
+            border-radius: 32px;
+            padding: 50px 35px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            width: 100%;
+            max-width: 450px;
+            animation: slideIn 1s ease-out;
+            position: relative;
+        }
+
+        @keyframes slideIn {
+            from { opacity: 0; transform: translateY(20px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        /* Profile Image */
+        .profile-wrapper {
+            position: relative;
+            width: 140px;
+            height: 140px;
+            margin: 0 auto 20px;
+        }
+
+        .profile-img {
+            width: 100%;
+            height: 100%;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 3px solid var(--card-border);
+            padding: 5px;
+            transition: 0.4s;
+        }
+
+        .card:hover .profile-img {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+            box-shadow: 0 0 20px var(--glow);
+        }
+
+        .status-dot {
+            position: absolute;
+            bottom: 10px;
+            right: 10px;
+            width: 18px;
+            height: 18px;
+            background: #22c55e;
+            border: 3px solid #1a1a2e;
+            border-radius: 50%;
+            box-shadow: 0 0 10px #22c55e;
+        }
+
+        h1 {
+            font-size: 2rem;
+            margin-bottom: 5px;
+            background: linear-gradient(to right, #fff, #94a3b8);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
+
+        .tagline {
+            color: var(--primary-color);
+            font-size: 0.85rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 25px;
+        }
+
+        /* About Section */
+        .about-text {
+            color: var(--text-secondary);
+            font-size: 0.95rem;
+            line-height: 1.6;
+            margin-bottom: 30px;
+            padding: 0 10px;
+        }
+
+        /* Skills */
+        .skills {
+            display: flex;
+            justify-content: center;
+            gap: 8px;
+            margin-bottom: 35px;
+            flex-wrap: wrap;
+        }
+
+        .skill-tag {
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            color: var(--text-secondary);
+            padding: 6px 12px;
+            border-radius: 10px;
+            font-size: 0.75rem;
+            font-weight: 600;
+            display: flex;
+            align-items: center;
+            gap: 5px;
+            transition: 0.3s;
+        }
+
+        .skill-tag:hover {
+            background: var(--primary-color);
+            color: #000;
+            transform: translateY(-3px);
+        }
+
+        /* Contacts */
+        .contact-section { margin-bottom: 30px; }
+        .contact-title { font-size: 0.95rem; color: var(--text-secondary); margin-bottom: 15px; font-weight: 600; letter-spacing: 1px; }
+        
+        .contact-links {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+        }
+
+        .contact-link {
+            width: 50px;
+            height: 50px;
+            background: rgba(255, 255, 255, 0.05);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: 0.3s;
+        }
+
+        .contact-link i { color: #fff; font-size: 1.2rem; }
+        .contact-link:hover { background: var(--primary-color); transform: scale(1.1); }
+        .contact-link:hover i { color: #000; }
+
+        /* Navigation Buttons */
+        .nav-container {
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            gap: 10px;
+            z-index: 100;
+        }
+
+        .menu-btn, .songs-btn {
+            width: 50px;
+            height: 50px;
+            background: var(--card-bg);
+            border: 1px solid var(--card-border);
+            border-radius: 50%;
+            color: white;
+            cursor: pointer;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transition: 0.3s;
+            backdrop-filter: blur(10px);
+        }
+
+        .songs-btn {
+            width: auto;
+            padding: 0 15px;
+            border-radius: 25px;
+            font-weight: 600;
+            font-size: 0.8rem;
+            gap: 8px;
+        }
+
+        .menu-btn:hover, .songs-btn:hover {
+            border-color: var(--primary-color);
+            transform: scale(1.05);
+        }
+
+        /* Modal Styles */
+        .music-modal {
+            display: none;
+            position: fixed;
+            top: 0; left: 0; width: 100%; height: 100%;
+            background: rgba(0,0,0,0.8);
+            backdrop-filter: blur(10px);
+            z-index: 1000;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .music-modal.active { display: flex; }
+
+        .modal-content {
+            background: #1a1a2e;
+            border: 1px solid var(--card-border);
+            border-radius: 24px;
+            padding: 30px;
+            width: 90%;
+            max-width: 380px;
+            text-align: center;
+            box-shadow: 0 0 30px rgba(0,0,0,0.5);
+        }
+
+        .modal-header {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin-bottom: 20px;
+            color: var(--text-primary);
+        }
+
+        .playlist-items {
+            max-height: 200px;
+            overflow-y: auto;
+            margin-top: 15px;
+        }
+
+        .track-item {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            background: rgba(255,255,255,0.05);
+            padding: 12px;
+            margin-bottom: 8px;
+            border-radius: 12px;
+            cursor: pointer;
+            transition: 0.3s;
+            text-align: left;
+            font-size: 0.85rem;
+        }
+
+        .track-item:hover {
+            background: var(--primary-color);
+            color: #000;
+        }
+
+        .music-modal audio {
+            width: 100%;
+            height: 40px;
+            filter: invert(1);
+            margin-bottom: 10px;
+        }
+
+        /* Menu */
+        .menu {
+            position: fixed;
+            top: 80px;
+            right: 20px;
+            background: rgba(15, 15, 35, 0.95);
+            border: 1px solid var(--card-border);
+            padding: 20px;
+            border-radius: 20px;
+            display: none;
+            z-index: 99;
+            width: 180px;
+        }
+
+        .menu.active { display: block; }
+        .menu ul { list-style: none; }
+        .menu ul li { margin-bottom: 15px; }
+        .menu ul li a { color: white; text-decoration: none; font-size: 0.9rem; display: flex; align-items: center; gap: 10px; }
+
+        .footer-text { margin-top: 30px; font-size: 0.7rem; color: var(--text-secondary); letter-spacing: 1px; }
+
+        @media (max-width: 480px) {
+            .card { padding: 40px 20px; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="nav-container">
+        <button class="songs-btn" onclick="toggleMusicModal()">
+            <i class="fas fa-music"></i> Songs
+        </button>
+        <button class="menu-btn" id="menuBtn"><i class="fas fa-bars"></i></button>
+    </div>
+
+    <div class="menu" id="menu">
+        <ul>
+            <li><a href="#home"><i class="fas fa-home"></i> Home</a></li>
+            <li><a href="#about"><i class="fas fa-user"></i> About</a></li>
+            <li><a href="#skills"><i class="fas fa-cogs"></i> Skills</a></li>
+            <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
+        </ul>
+    </div>
+
+    <div class="card" id="home">
+        <div class="profile-wrapper">
+            <img src="https://g.top4top.io/p_3690tnpxz1.jpg" alt="MD Hafiz" class="profile-img">
+            <div class="status-dot"></div>
+        </div>
+
+        <h1>MD Hafiz</h1>
+        <p class="tagline">Tech Enthusiast & Developer</p>
+
+        <div class="about-text" id="about">
+            Welcome! I am a passionate developer dedicated to exploring the worlds of Python Programming, Ethical Hacking, and Web Development. Driven by the challenge of building secure and efficient solutions, I have turned my obsession with cybersecurity and emerging technologies into a lifelong journey of discovery and innovation.
+        </div>
+
+        <div class="skills" id="skills">
+            <span class="skill-tag"><i class="fab fa-python"></i> Python</span>
+            <span class="skill-tag"><i class="fas fa-shield-alt"></i> Cybersecurity</span>
+            <span class="skill-tag"><i class="fas fa-database"></i> SQL Injection</span>
+            <span class="skill-tag"><i class="fas fa-network-wired"></i> Networking</span>
+            <span class="skill-tag"><i class="fas fa-biohazard"></i> DDoS Attack</span>
+            <span class="skill-tag"><i class="fas fa-terminal"></i> Termux</span>
+            <span class="skill-tag"><i class="fab fa-linux"></i> Linux</span>
+            <span class="skill-tag"><i class="fab fa-html5"></i> HTML</span>
+            <span class="skill-tag"><i class="fab fa-css3-alt"></i> CSS</span>
+        </div>
+
+        <div class="contact-section" id="contact">
+            <p class="contact-title">CONTACT ME</p>
+            <div class="contact-links">
+                <a href="https://www.facebook.com/mdhafiz20" target="_blank" class="contact-link">
+                    <i class="fab fa-facebook-f"></i>
+                </a>
+                <a href="https://wa.me/8801724076357" target="_blank" class="contact-link">
+                    <i class="fab fa-whatsapp"></i>
+                </a>
+                <a href="https://t.me/mdhafiz24" target="_blank" class="contact-link">
+                    <i class="fab fa-telegram-plane"></i>
+                </a>
+            </div>
+        </div>
+
+        <p class="footer-text">&copy; 2026 MDHAFIZ.AMI.BD</p>
+    </div>
+
+    <div id="musicModal" class="music-modal">
+        <div class="modal-content">
+            <div class="modal-header">
+                <span style="font-weight: 600;"><i class="fas fa-compact-disc"></i> My Playlist</span>
+                <i class="fas fa-times" onclick="toggleMusicModal()" style="cursor: pointer;"></i>
+            </div>
+            
+            <audio id="mainAudio" controls>
+                <source id="audioSource" src="https://b.top4top.io/m_36909hltj1.mp3" type="audio/mpeg">
+            </audio>
+
+                    <div class="playlist-items">
+            <div class="track-item" onclick="playSong('https://b.top4top.io/m_36909hltj1.mp3', 'Background Music 1')">
+                <i class="fas fa-play"></i>
+                <span>শুহাদার_কাননে_আমি_যেতে_চাই___Cover_-_Abu_Ahmad_Al_Hindi___Ummah_Studio.mp3</span>
+            </div>
+
+            <div class="track-item" onclick="playSong('https://j.top4top.io/m_3693rf2sn0.mp3', 'Track Name 2')">
+                <i class="fas fa-play"></i>
+                <span>Exclusive_Nasheed_کوئی_تلاش_کرنا_چاہے_-__কেউ_খুঁজতে_চাইলেও_আমায়_খুঁজে_পাবে_না_-_Cover__Ahmad_Faiyaaz.mp3</span>
+            </div>
+
+            <div class="track-item" onclick="playSong('https://b.top4top.io/m_3693eyp870.mp3', 'Track Name 3')">
+                <i class="fas fa-play"></i>
+                <span>হৃদয়_কাঁপানো_মরমি_নাশিদ___মুহাব্বতের_দলিল__শহীদ_আহসান_আজিজ_রহ.____دلیل_محبت___Ahmad_Faiyaaz.mp3</span>
+            </div>
+                        <div class="track-item" onclick="playSong('https://k.top4top.io/m_3693zt6u00.mp3', 'Track Name 4')">
+                <i class="fas fa-play"></i>
+                <span>সেই_সংগ্রামী_মানুষের_সারিতে___Cover_-_Ahmad_Faiyaaz___Ummah_Studio.mp3</span>
+                        </div>
+        </div> </div> </div>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        const menuBtn = document.getElementById('menuBtn');
+        const menu = document.getElementById('menu');
+
+        menuBtn.addEventListener('click', () => {
+            menu.classList.toggle('active');
+        });
+
+        document.addEventListener('click', (e) => {
+            if (!menu.contains(e.target) && !menuBtn.contains(e.target)) {
+                menu.classList.remove('active');
+            }
+        });
+
+        // Music Functions
+        function toggleMusicModal() {
+            const modal = document.getElementById('musicModal');
+            modal.classList.toggle('active');
+        }
+
+        function playSong(url, name) {
+            const audio = document.getElementById('mainAudio');
+            const source = document.getElementById('audioSource');
+            source.src = url;
+            audio.load();
+            audio.play();
+        }
+
+        // ক্লোজ বাটন ছাড়াও বাইরে ক্লিক করলে বন্ধ হবে
+        window.onclick = function(event) {
+            const modal = document.getElementById('musicModal');
+            if (event.target == modal) {
+                modal.classList.remove('active');
+            }
+        }
+    </script>
+</body>
+  </html>
