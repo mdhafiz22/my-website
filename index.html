@@ -410,7 +410,12 @@
 .dropdown:hover .dropdown-content {
     display: block;
 }
-
+.dropdown-content {
+    max-height: 300px; /* মেনুর উচ্চতা নির্দিষ্ট করে দেওয়া */
+    overflow-y: auto;  /* কন্টেন্ট বেশি হলে স্ক্রলবার আসবে */
+    -webkit-overflow-scrolling: touch; /* মোবাইলে স্মুথ স্ক্রলিংয়ের জন্য */
+}
+        
     </style>
 </head>
 <body>
