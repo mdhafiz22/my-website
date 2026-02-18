@@ -415,6 +415,43 @@
     overflow-y: auto;  /* কন্টেন্ট বেশি হলে স্ক্রলবার আসবে */
     -webkit-overflow-scrolling: touch; /* মোবাইলে স্মুথ স্ক্রলিংয়ের জন্য */
 }
+/* Nested Dropdown Styles */
+.nested-dropdown {
+    position: relative;
+}
+
+.nested-content {
+    display: none;
+    position: absolute;
+    left: -190px; /* সাব-মেনুটি বাম দিকে শো করবে */
+    top: 0;
+    background-color: #1a1a2e;
+    min-width: 180px;
+    border-radius: 12px;
+    border: 1px solid var(--card-border);
+    box-shadow: var(--shadow);
+}
+
+.nested-dropdown:hover .nested-content {
+    display: block;
+}
+
+.nested-btn {
+    display: flex !important;
+    align-items: center;
+    justify-content: space-between;
+}
+
+/* মোবাইলে যাতে স্ক্রিনের বাইরে না যায় */
+@media (max-width: 480px) {
+    .nested-content {
+        position: static; /* মোবাইলে নিচে নিচে দেখাবে */
+        left: 0;
+        background: rgba(255, 255, 255, 0.05);
+        margin-left: 10px;
+    }
+}
+
         
     </style>
 </head>
@@ -463,7 +500,38 @@
             <a href="https://t.me/realitycheckbd1" target="_blank">
     <i class="fab fa-telegram"></i> Realitycheckbd
        </a>
-            
+            <li class="dropdown">
+            <a href="javascript:void(0)" class="dropbtn"><i class="fas fa-video"></i> Video</a>
+            <div class="dropdown-content">
+                <div class="nested-dropdown">
+                    <a href="javascript:void(0)" class="nested-btn"><i class="fab fa-youtube"></i> তিতুমীর মিডিয়া<i class="fas fa-chevron-right" style="font-size: 0.7rem; margin-left: auto;"></i></a>
+                    <div class="nested-content">
+                        <a href="https://archive.gnews.to/index.php/s/9Lszqc6NgcfWToa" target="_blank">তিতুমীর মিডিয়া পরিবেশিত ।। তুর্কিস্তানি মুজাহিদদের একটি চমৎকার ট্রেনিং ভিডিও “উম্মাহর ঢাল”</a>
+                        <a href="ভিডিও_লিঙ্ক_২" target="_blank">ভিডিও ২</a>
+                    </div>
+                </div>
+                <div class="nested-dropdown">
+                    <a href="javascript:void(0)" class="nested-btn"><i class="fab fa-youtube"></i> Ummah Studio <i class="fas fa-chevron-right" style="font-size: 0.7rem; margin-left: auto;"></i></a>
+                    <div class="nested-content">
+                        <a href="ভিডিও_লিঙ্ক_১" target="_blank">ভিডিও ১</a>
+                        <a href="ভিডিও_লিঙ্ক_২" target="_blank">ভিডিও ২</a>
+                    </div>
+                </div>
+                <div class="nested-dropdown">
+                    <a href="javascript:void(0)" class="nested-btn"><i class="fab fa-youtube"></i> Baseera <i class="fas fa-chevron-right" style="font-size: 0.7rem; margin-left: auto;"></i></a>
+                    <div class="nested-content">
+                        <a href="ভিডিও_লিঙ্ক_১" target="_blank">ভিডিও ১</a>
+                    </div>
+                </div>
+                <div class="nested-dropdown">
+                    <a href="javascript:void(0)" class="nested-btn"><i class="fab fa-youtube"></i> Hikma Media <i class="fas fa-chevron-right" style="font-size: 0.7rem; margin-left: auto;"></i></a>
+                    <div class="nested-content">
+                        <a href="ভিডিও_লিঙ্ক_১" target="_blank">ভিডিও ১</a>
+                    </div>
+                </div>
+            </div>
+        </li>
+        
         </div>
     </li>
 </ul>
@@ -512,9 +580,8 @@
         </div>
 
         <p class="footer-text">&copy; 2026 mdhafiz.bro.bd | All Rights Reserved.</p>
-    </div>
-
-    <div id="musicModal" class="music-modal">
+                        </div>
+                        <div id="musicModal" class="music-modal">
         <div class="modal-content">
             <div class="modal-header">
                 <span style="font-weight: 600; font-family: 'Poppins';"><i class="fas fa-compact-disc"></i> Current Playlist</span>
@@ -558,7 +625,7 @@
         </div>
     </div>
 
-    <script>
+        <script>
         const menuBtn = document.getElementById('menuBtn');
         const menu = document.getElementById('menu');
 
@@ -602,5 +669,4 @@
     </script>
     
 </body>
-    </html>
-    
+</html>
